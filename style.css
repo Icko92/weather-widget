@@ -102,6 +102,7 @@ ul {
 #widget-icon {
   width: 50%;
   font-size: 7vw;
+  transition: 1s;
 }
 .widget-icon-name {
   width: 50%;
@@ -114,10 +115,12 @@ ul {
   width: 30%;
   padding-left: 1.8vw;
   margin-top: 1vw;
+  transition: 1s;
 }
 .wind-direction {
   width: 25%;
   font-size: 1vw;
+  transition: 1s;
 }
 .wind-speed {
   width: 40%;
@@ -127,12 +130,13 @@ ul {
 }
 .widget-day {
   width: 30%;
-  font-size: 2.2vw;
+  font-size: 3vw;
   padding-left: 2vw;
 }
 .widget-temp {
   width: 50%;
   font-size: 6vw;
+  color: tomato;
 }
 
 /* icon styles */

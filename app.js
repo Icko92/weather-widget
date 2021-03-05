@@ -1,5 +1,9 @@
 import weatherData from "./weatherData.js";
-import { iconClassConverter, capitalizeFirstLetter } from "./helper.js";
+import {
+  iconClassConverter,
+  capitalizeFirstLetter,
+  windIconDirection,
+} from "./helper.js";
 const days = weatherData.days;
 console.log(weatherData);
 
@@ -49,6 +53,9 @@ days.forEach((day, index) => {
 //add attributes
 widgetIcon.setAttribute("class", `fas fa-${iconClassConverter(days[0].type)}`);
 widgetDirectionIcon.setAttribute("class", `fas fa-arrow-up`);
+widgetDirectionIcon.style.webkitTransform = `rotate(${windIconDirection(
+  days[0].windDirection
+)})`;
 
 //add content
 widgetIconName.textContent = capitalizeFirstLetter(days[0].type);
@@ -62,3 +69,27 @@ widgetDay.textContent = days[0].day;
 widgetTemp.innerHTML = days[0].temp + "&#176";
 
 //add days event listener
+
+const dayrCards = document.querySelectorAll(".day-card");
+dayrCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    widgetIcon.setAttribute(
+      "class",
+      `fas fa-${iconClassConverter(days[card.id].type)}`
+    );
+    widgetIconName.textContent = capitalizeFirstLetter(days[card.id].type);
+    widgetWindDirection.innerHTML = capitalizeFirstLetter(
+      days[card.id].windDirection.split("-")[0] +
+        " " +
+        capitalizeFirstLetter(days[card.id].windDirection.split("-")[1])
+    );
+    windSpeed.textContent = `${days[card.id].windSpeed} ${
+      weatherData.windSpeedUnit
+    }`;
+    widgetDay.textContent = days[card.id].day;
+    widgetTemp.innerHTML = days[card.id].temp + "&#176";
+    widgetDirectionIcon.style.webkitTransform = `rotate(${windIconDirection(
+      days[card.id].windDirection
+    )})`;
+  });
+});

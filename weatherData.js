@@ -4,7 +4,7 @@ const weatherData = {
   days: [
     {
       day: "Mon",
-      temp: 22,
+      temp: 23,
       windDirection: "north-east",
       windSpeed: 10,
       type: "sunny",
@@ -12,21 +12,21 @@ const weatherData = {
     {
       day: "Tue",
       temp: 22,
-      windDirection: "north-east",
-      windSpeed: 10,
+      windDirection: "south-east",
+      windSpeed: 12,
       type: "windy",
     },
     {
       day: "Wed",
       temp: 22,
-      windDirection: "north-east",
+      windDirection: "south-west",
       windSpeed: 10,
       type: "rainy",
     },
     {
       day: "Thu",
       temp: 22,
-      windDirection: "north-east",
+      windDirection: "north-west",
       windSpeed: 10,
       type: "snowy",
     },
