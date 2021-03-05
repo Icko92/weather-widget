@@ -25,3 +25,14 @@ export const windIconDirection = (value) => {
     return "315deg";
   }
 };
+
+export const tempConverter = (tempUnit, value) => {
+  const unit = tempUnit.toLowerCase();
+  if (unit === "kelvin") {
+    return parseInt(value) + 273.15;
+  }
+};
+
+export const kilometarsPerHour = (value) => {
+  return value * 3.6;
+};

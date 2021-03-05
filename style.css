@@ -99,6 +99,21 @@ ul {
   justify-content: space-between;
   align-items: center;
 }
+#kelvin {
+  width: 50%;
+  padding-left: 2vw;
+  padding-bottom: 2vw;
+  cursor: pointer;
+  font-size: 2vw;
+}
+#kilometars {
+  width: 50%;
+  padding-left: 2vw;
+  padding-bottom: 2vw;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
 #widget-icon {
   width: 50%;
   font-size: 7vw;
@@ -124,7 +139,7 @@ ul {
 }
 .wind-speed {
   width: 40%;
-  font-size: 2vw;
+  font-size: 1.6vw;
   font-weight: 500;
   padding-right: 0.5vw;
 }
@@ -134,9 +149,9 @@ ul {
   padding-left: 2vw;
 }
 .widget-temp {
-  width: 50%;
-  font-size: 6vw;
+  font-size: 3vw;
   color: tomato;
+  padding-right: 1vw;
 }
 
 /* icon styles */

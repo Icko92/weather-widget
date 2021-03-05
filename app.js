@@ -3,6 +3,8 @@ import {
   iconClassConverter,
   capitalizeFirstLetter,
   windIconDirection,
+  tempConverter,
+  kilometarsPerHour,
 } from "./helper.js";
 const days = weatherData.days;
 console.log(weatherData);
@@ -16,6 +18,8 @@ const widgetWindDirection = document.querySelector(".wind-direction");
 const windSpeed = document.querySelector(".wind-speed");
 const widgetDay = document.querySelector(".widget-day");
 const widgetTemp = document.querySelector(".widget-temp");
+const kelvin = document.querySelector("#kelvin");
+const kilometars = document.querySelector("#kilometars");
 
 // create element
 const daysList = document.createElement("ul");
@@ -34,7 +38,6 @@ days.forEach((day, index) => {
   dayCard.setAttribute("id", index);
   weatherIcon.setAttribute("class", `fas fa-${iconClassConverter(day.type)}`);
   dayWeatherInfo.setAttribute("class", "day-weather-info");
-
   //add content
   dayName.textContent = day.day;
   dayTemperature.innerHTML = day.temp + "&#176";
@@ -66,7 +69,7 @@ widgetWindDirection.innerHTML = capitalizeFirstLetter(
 );
 windSpeed.textContent = `${days[0].windSpeed} ${weatherData.windSpeedUnit}`;
 widgetDay.textContent = days[0].day;
-widgetTemp.innerHTML = days[0].temp + "&#176";
+widgetTemp.innerHTML = days[0].temp;
 
 //add days event listener
 
@@ -87,9 +90,20 @@ dayrCards.forEach((card) => {
       weatherData.windSpeedUnit
     }`;
     widgetDay.textContent = days[card.id].day;
-    widgetTemp.innerHTML = days[card.id].temp + "&#176";
+    widgetTemp.innerHTML = days[card.id].temp;
     widgetDirectionIcon.style.webkitTransform = `rotate(${windIconDirection(
       days[card.id].windDirection
     )})`;
   });
+});
+
+kelvin.addEventListener("click", (e) => {
+  const newTemp = tempConverter(e.target.id, widgetTemp.innerHTML);
+  widgetTemp.innerHTML = newTemp;
+  console.log(widgetTemp.innerHTML);
+});
+kilometars.addEventListener("click", (e) => {
+  const value = parseInt(windSpeed.textContent.split(" ")[0]);
+  const newSpeed = kilometarsPerHour(value);
+  windSpeed.innerHTML = `${newSpeed} km/h`;
 });
