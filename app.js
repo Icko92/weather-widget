@@ -1,9 +1,17 @@
 import weatherData from "./weatherData.js";
+import { iconClassConverter, capitalizeFirstLetter } from "./helper.js";
 const days = weatherData.days;
 console.log(weatherData);
 
 // dom selectors
 const daysWrap = document.querySelector(".days-wrap");
+const widgetIcon = document.querySelector("#widget-icon");
+const widgetIconName = document.querySelector(".widget-icon-name");
+const widgetDirectionIcon = document.querySelector("#widget-direction-icon");
+const widgetWindDirection = document.querySelector(".wind-direction");
+const windSpeed = document.querySelector(".wind-speed");
+const widgetDay = document.querySelector(".widget-day");
+const widgetTemp = document.querySelector(".widget-temp");
 
 // create element
 const daysList = document.createElement("ul");
@@ -18,7 +26,9 @@ days.forEach((day, index) => {
   const dayTemperature = document.createElement("p");
 
   //add attributes
-  weatherIcon.setAttribute("class", "fas fa-sun");
+  dayCard.setAttribute("class", "day-card");
+  dayCard.setAttribute("id", index);
+  weatherIcon.setAttribute("class", `fas fa-${iconClassConverter(day.type)}`);
   dayWeatherInfo.setAttribute("class", "day-weather-info");
 
   //add content
@@ -33,3 +43,22 @@ days.forEach((day, index) => {
   dayWeatherInfo.appendChild(dayName);
   dayWeatherInfo.appendChild(dayTemperature);
 });
+
+//render widget
+
+//add attributes
+widgetIcon.setAttribute("class", `fas fa-${iconClassConverter(days[0].type)}`);
+widgetDirectionIcon.setAttribute("class", `fas fa-arrow-up`);
+
+//add content
+widgetIconName.textContent = capitalizeFirstLetter(days[0].type);
+widgetWindDirection.innerHTML = capitalizeFirstLetter(
+  days[0].windDirection.split("-")[0] +
+    " " +
+    capitalizeFirstLetter(days[0].windDirection.split("-")[1])
+);
+windSpeed.textContent = `${days[0].windSpeed} ${weatherData.windSpeedUnit}`;
+widgetDay.textContent = days[0].day;
+widgetTemp.innerHTML = days[0].temp + "&#176";
+
+//add days event listener
